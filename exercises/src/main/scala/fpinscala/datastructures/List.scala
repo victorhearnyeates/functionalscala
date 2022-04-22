@@ -37,6 +37,8 @@ object List { // `List` companion object. Contains functions for creating and wo
       case Cons(h,t) => Cons(h, append(t, a2))
     }
 
+  def ++[A](a1: List[A], a2: List[A]): List[A] = append(a1, a2)
+
   def foldRight[A,B](as: List[A], z: B)(f: (A, B) => B): B = // Utility functions
     as match {
       case Nil => z
@@ -103,5 +105,10 @@ object List { // `List` companion object. Contains functions for creating and wo
   def filter[A](l: List[A])(p: A => Boolean): List[A] = l match {
     case Nil => Nil
     case Cons(x, xs) => if (p(x)) Cons(x, filter(xs)(p)) else filter(xs)(p)
+  }
+
+  def flatMap[A, B](as: List[A], f: A => List[B]): List[B] = as match {
+    case Nil => Nil
+    case Cons(x, xs) => List.append(f(x), flatMap(xs, f))
   }
 }

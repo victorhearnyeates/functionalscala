@@ -1,6 +1,12 @@
+import sbt.Keys.libraryDependencies
+
 val commonSettings = Seq(
-  scalaVersion := "2.12.1"
+  scalaVersion := "2.13.6",
+  libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.11",
+  libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.11" % "test"
 )
+
+
 
 lazy val root = (project in file("."))
   .aggregate(exercises, answers)
