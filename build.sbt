@@ -12,7 +12,7 @@ lazy val root = (project in file("."))
   .aggregate(exercises, answers)
   .settings(commonSettings)
   .settings(
-    name := "fpinscala"
+    name := "functionalscala"
   )
 
 lazy val exercises = (project in file("exercises"))
